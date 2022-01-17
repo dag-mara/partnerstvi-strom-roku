@@ -1,0 +1,429 @@
+@charset 'utf-8';
+
+@import 'settings';
+@import '../node_modules/foundation-sites/scss/foundation.scss';
+@import '../node_modules/motion-ui/src/motion-ui.scss';
+
+// Global styles
+@include foundation-global-styles;
+@include foundation-forms;
+@include foundation-typography;
+
+// Grids (choose one)
+@include foundation-xy-grid-classes;
+// @include foundation-grid;
+// @include foundation-flex-grid;
+
+// Generic components
+@include foundation-button;
+@include foundation-button-group;
+@include foundation-close-button;
+/* @include foundation-label;
+@include foundation-progress-bar;
+@include foundation-slider;
+@include foundation-range-input;
+@include foundation-switch;
+@include foundation-table; */
+// Basic components
+@include foundation-badge;
+/* @include foundation-breadcrumbs; */
+@include foundation-callout;
+/* @include foundation-card;
+@include foundation-dropdown;
+@include foundation-pagination;
+@include foundation-tooltip; */
+
+// Containers
+/* @include foundation-accordion;
+@include foundation-media-object; */
+@include foundation-orbit;
+/* @include foundation-responsive-embed;
+@include foundation-tabs;
+@include foundation-thumbnail; */
+// Menu-based containers
+@include foundation-menu;
+@include foundation-menu-icon;
+@include foundation-accordion-menu;
+@include foundation-drilldown-menu;
+@include foundation-dropdown-menu;
+
+// Layout components
+@include foundation-off-canvas;
+@include foundation-reveal;
+@include foundation-sticky;
+@include foundation-title-bar;
+@include foundation-top-bar;
+
+// Helpers
+@include foundation-float-classes;
+@include foundation-flex-classes;
+@include foundation-visibility-classes;
+// @include foundation-prototype-classes;
+
+// Motion UI
+@include motion-ui-transitions;
+@include motion-ui-animations;
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;   
+}
+
+h1,
+h2,
+h3,
+h4,
+.button {
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p {
+    font-weight: 500;
+    color: $dark-gray;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+//navigation
+#navbar {
+    padding: 0.5rem 3rem;
+    background-color: rgb(186, 186, 186);
+    transition: 0.4s;
+}
+
+.top-bar-right {
+    .menu a {
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+
+
+
+.site-logo img:hover {
+    transform: scale(1.5);
+}
+
+#logo {
+    transition: 0.4s;
+}
+
+
+ul.menu{ 
+    background-color:rgb(186, 186, 186);
+    a {
+           transition: all 0.2s ease-in;
+           position: relative;
+           background-color: transparent;
+   
+           &::before {
+               content: '';
+               position: absolute;
+               bottom: 3px;
+               left: 0;
+               right: 0;
+               margin: 0 auto;
+               width: 80%;
+               height: 2px;
+               background: $primary;
+               -webkit-transform: scale3d(0, 1, 1);
+               transform: scale3d(0, 1, 1);
+               -webkit-transition: -webkit-transform 0.1s;
+               transition: transform 0.1s;
+           }
+       }
+   
+       .active a {
+           background: transparent;
+           color: $black;
+           &::before {
+           opacity: 1;
+           -webkit-transform: scale3d(1, 1, 1);
+           transform: scale3d(1, 1, 1);
+           -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+           -webkit-transition-duration: 0.3s;
+           transition-duration: 0.3s;
+           }
+       }
+   
+       .menu-item:hover>a,
+       .menu-item:focus>a {
+           &::before {
+           -webkit-transform: scale3d(1, 1, 1);
+           transform: scale3d(1, 1, 1);
+           -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+           -webkit-transition-duration: 0.3s;
+           transition-duration: 0.3s;
+           }
+           color: $primary;
+       }
+   }
+}
+
+
+//mobile menu
+
+#navbar-mobile {
+    /*  height: 220px; */
+ 
+     .mobile-menu {
+         position: fixed;
+         z-index: 3;
+         top: 20px;
+         right: 13px;
+         transition: all 0.2s ease-in;
+     }
+    }
+
+.mobile-menu-logo,
+.close-button {
+    cursor: pointer;
+}
+ 
+ .off-canvas-wrapper-inner {
+     background-color: $white;
+ }
+ 
+ #offCanvasPrimary {
+     width: 100%;
+     background-color: $white;
+     width: 100%;
+     box-shadow: none;
+     text-align: center;
+ 
+     &.is-open {
+         visibility: visible;
+     }
+ 
+     &:not(.is-open) {
+         transform: translate(100%, 0);
+         -ms-transform: translate(100%, 0);
+     }
+ 
+     .close-button {
+         right: 13px;
+         top: 20px;
+     }
+ 
+     .oc-menu {
+         margin-top: 90px;
+         font-size: 19px;
+         line-height: 24px;
+       
+ 
+         li {
+             margin-bottom: calc(50px - 0.7rem);
+
+             a {
+                 color: $primary;
+                 &:hover,
+                 :focus {
+                    color:scale-color($primary, $lightness: -40%);
+                    font-size: 20px;
+                 }
+             }
+ 
+             &:last-child {
+                 margin-bottom: 0;
+             }
+ 
+             &.active {
+                 a {
+                     background-color: $white;
+                     color: $black;
+                     // border-bottom: 1px solid $black;
+                     text-decoration: underline;
+                 }
+             }
+         }
+     }
+ }
+//section cover image
+ .cover {
+    height: 80vh;
+    width: 100%;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.041), rgba(0, 0, 0, 0.041)), url("../images/cover_large.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-color: rgb(133, 133, 133);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.cover-title {
+    color: #ffffff;
+    width: 50%;
+    h1 {
+    font-size: 3rem;
+    }
+}
+
+.cover-subtitle {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+//section info
+section {
+    padding-top: 2.5rem;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+}
+
+.info-container {
+max-width: 600px;
+}
+
+
+//section orbit
+.orbit-container {
+    height: 180px;
+}
+
+.orbit-caption {
+    background-color: transparent;
+    margin: 3rem 4rem;
+    font-size: 3rem;
+}
+
+.orbit-previous,
+.orbit-next {
+    z-index: 4;
+}
+
+//section support
+.podporte {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.podporte-container {
+    max-width: 600px;
+}
+
+.button-group {
+    margin: auto;
+}
+
+.button,
+.button-scale,
+.first,
+.last {
+    transition: 0.2s;
+}
+
+.button-scale:hover {
+   transform: scale(1.03);
+}
+
+.first { 
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    margin-right: -1px;
+}
+
+.last { 
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    margin-left: -1px;
+}
+
+.first:hover,
+.last:hover {
+    background-color: $white;
+        color: $primary;
+        border-color: $primary;
+}
+
+.badge {
+    
+    font-size: 2rem;
+    position: relative;
+    top: -2rem;
+    margin: 0 auto;
+   
+}
+
+.callout {
+    margin: 3rem 3rem 2rem 3rem;
+    padding: 0;
+    border-radius: 10px;
+    border-width: 2px;
+    z-index: 2;
+    .button {
+        margin-bottom: 2rem;
+    }
+    hr {
+        margin-bottom: 0;
+    }
+}
+
+.callout-text {
+    margin: 2rem 2rem 5rem 2rem;
+}
+
+.callout-price {
+    padding-top: 2rem;
+}
+
+.callout-bottom:hover {
+    background-color: scale-color($secondary, $lightness: 60%);
+}
+
+
+
+//section contact
+#kontakt a:hover {
+    fill: scale-color($primary, $lightness: -40%);
+}
+
+.phone,
+.mail {
+    margin: 3px;
+}
+
+.icon-footer {
+        margin: 5px;
+    &:hover {
+        fill: scale-color($primary, $lightness: -40%);
+    }
+    }
+
+@media screen and (min-width: 1024px) {
+
+h2 {
+    font-size: 2.5rem;
+}
+
+    .cover {
+        height: 70vh;
+    }
+    
+    .cover-title h1 {
+        font-size: 4rem;
+    }
+}
+
+.orbit-container {
+    height: 120px;
+}
+ 
